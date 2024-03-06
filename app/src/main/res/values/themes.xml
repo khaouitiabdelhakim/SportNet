@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SportNet" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+        <item name="android:layoutDirection">ltr</item>
+
+        <item name="android:windowTranslucentStatus">true</item>
+
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#FFC107</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="editTextColor">@color/white</item>
+        <item name="hintTextColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/black</item>
+
+        <item name="android:fontFamily">@font/main_font</item>
+    </style>
+
+    <style name="Theme.SportNet" parent="Base.Theme.SportNet" />
+
+
+    <style name="BottomTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:layoutDirection">ltr</item>
+        <item name="android:textSize">10sp</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="android:textColorPrimary">@color/black</item>
+    </style>
+
+
+</resources>

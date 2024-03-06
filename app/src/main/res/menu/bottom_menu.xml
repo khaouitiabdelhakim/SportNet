@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- bottom_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home_full_icon"
+        android:title="@string/home_tab"/>
+    <item
+        android:id="@+id/rooms"
+        android:icon="@drawable/categories_empty_icon"
+        android:title="@string/rooms_tab"/>
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/user_empty_icon"
+        android:title="@string/profile_tab"/>
+</menu>
+

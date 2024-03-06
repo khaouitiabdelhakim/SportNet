@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "133270277992",
+    "project_id": "sportnetmobile",
+    "storage_bucket": "sportnetmobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133270277992:android:86653d02b7d96d2fced0dd",
+        "android_client_info": {
+          "package_name": "com.abdelhakim.sportnet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjMoQE40wGHtrCCnKfTdk5vZZWytRcHjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
