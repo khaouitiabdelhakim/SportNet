@@ -1,5 +1,6 @@
 package com.abdelhakim.sportnet
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import com.abdelhakim.sportnet.fragments.HomeFragment
 import com.abdelhakim.sportnet.fragments.ProfileFragment
 import com.abdelhakim.sportnet.fragments.RoomsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        setTheme(R.style.Theme_SportNet)
 
         loadFragment(HomeFragment())
 
@@ -71,4 +73,7 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.container,fragment)
         transaction.commit()
     }
+
+
+
 }
