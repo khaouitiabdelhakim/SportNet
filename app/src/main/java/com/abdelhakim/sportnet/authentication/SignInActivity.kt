@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.abdelhakim.sportnet.MainActivity
 import com.abdelhakim.sportnet.R
+import com.abdelhakim.sportnet.StarterActivity
 import com.abdelhakim.sportnet.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -51,7 +52,7 @@ class SignInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Toast.makeText(this, "Sign in successful", Toast.LENGTH_SHORT).show()
                     // Navigating to the main activity
-                    startActivity(Intent(this@SignInActivity, MainActivity::class.java))
+                    startActivity(Intent(this@SignInActivity, StarterActivity::class.java))
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(baseContext, "Authentication failed. Please try again.",
@@ -71,7 +72,7 @@ class SignInActivity : AppCompatActivity() {
         val user = auth.currentUser
         if (user != null) {
             finish()
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, StarterActivity::class.java)
             startActivity(intent)
         }
     }

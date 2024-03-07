@@ -95,12 +95,13 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/content"
-                android:layout_margin="10dp"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
                 android:scaleType="centerCrop"
-                />
+                app:shapeAppearanceOverlay="@style/RoundedCornerImageView" />
+
 
 
             <LinearLayout

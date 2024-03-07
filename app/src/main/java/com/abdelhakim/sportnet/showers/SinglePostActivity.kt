@@ -69,6 +69,7 @@ class SinglePostActivity : AppCompatActivity() {
 
                 binding.time.text  = Utils.formatDate(post.time)
                 binding.text.text  = post.text
+                binding.username.text  = post.username
 
                 binding.likes.text  = Utils.formatSocialMediaNumber(post.likes)
                 binding.shares.text  = Utils.formatSocialMediaNumber(post.shares)

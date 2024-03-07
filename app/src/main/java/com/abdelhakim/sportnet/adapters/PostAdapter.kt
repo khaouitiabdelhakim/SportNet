@@ -109,7 +109,7 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
 
         holder.time.text  = Utils.formatDate(posts[position].time)
         holder.text.text  = posts[position].text
-        holder.text.text  = posts[position].text
+        holder.username.text  = posts[position].username
 
         holder.likes.text  = Utils.formatSocialMediaNumber(posts[position].likes)
         holder.shares.text  = Utils.formatSocialMediaNumber(posts[position].shares)

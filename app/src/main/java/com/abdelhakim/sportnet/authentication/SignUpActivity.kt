@@ -177,7 +177,7 @@ class SignUpActivity : AppCompatActivity() {
         val user = auth.currentUser
         if (user != null) {
             finish()
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, StarterActivity::class.java)
             startActivity(intent)
         }
     }
