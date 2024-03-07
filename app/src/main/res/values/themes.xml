@@ -21,7 +21,9 @@
         <item name="android:fontFamily">@font/main_font</item>
     </style>
 
-    <style name="Theme.SportNet" parent="Base.Theme.SportNet" />
+    <style name="Theme.SportNet" parent="Base.Theme.SportNet" >
+        <item name="android:fontFamily">@font/main_font</item>
+    </style>
 
 
     <style name="BottomTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">

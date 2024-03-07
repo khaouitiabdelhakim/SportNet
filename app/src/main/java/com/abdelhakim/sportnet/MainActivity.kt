@@ -9,6 +9,7 @@ import com.abdelhakim.sportnet.databinding.ActivityMainBinding
 import com.abdelhakim.sportnet.fragments.HomeFragment
 import com.abdelhakim.sportnet.fragments.ProfileFragment
 import com.abdelhakim.sportnet.fragments.RoomsFragment
+import com.abdelhakim.sportnet.models.User
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -18,6 +19,12 @@ class MainActivity : AppCompatActivity() {
 
     // for bottom nav bar
     lateinit var bottomNav : BottomNavigationView
+
+
+    companion object {
+        lateinit var currentUser: User
+        lateinit var userLikes: ArrayList<String>
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

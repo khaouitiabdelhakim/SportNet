@@ -20,7 +20,6 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setTheme(R.style.Theme_SportNet)
 
         auth = FirebaseAuth.getInstance()
 
