@@ -13,6 +13,7 @@ import com.ensias.sportnet.models.User
 import com.ensias.sportnet.utils.Utils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.ensias.sportnet.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -41,6 +42,7 @@ class AccountShowerActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         loadUserPostsAndInfo()
+        binding.editProfile.visibility = View.GONE
 
         binding.editProfile.setOnClickListener {
             val intent = Intent(this@AccountShowerActivity,ProfileActivity::class.java)
@@ -73,6 +75,8 @@ class AccountShowerActivity : AppCompatActivity() {
                         .load(currentAccount.profilePictureUrl)
                         .apply(RequestOptions().centerCrop())
                         .into(binding.profileBanner)
+
+                    if (currentAccount.username.equals(MainActivity.currentUser.username)) binding.editProfile.visibility = View.VISIBLE
 
 
                 }

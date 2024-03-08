@@ -162,6 +162,7 @@ class SignUpActivity : AppCompatActivity() {
                                     } else {
                                         Toast.makeText(this, "Failed to create user node in database", Toast.LENGTH_SHORT).show()
                                     }
+
                                 }
                         }
                     }
