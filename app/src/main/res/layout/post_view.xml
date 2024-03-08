@@ -2,7 +2,6 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -24,6 +23,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:id="@+id/profileSection"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -55,6 +55,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:fontFamily="@font/main_font"
                         android:id="@+id/username"
                         android:maxLines="1"
                         android:layout_width="wrap_content"
@@ -66,6 +67,7 @@
 
 
                     <TextView
+                        android:fontFamily="@font/main_font"
                         android:id="@+id/time"
                         android:maxLines="1"
                         android:layout_width="wrap_content"
@@ -82,14 +84,12 @@
 
 
             <TextView
+                android:fontFamily="@font/main_font"
                 android:id="@+id/text"
                 android:layout_marginHorizontal="10dp"
                 android:maxLines="3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lionel Messi, parfois surnommé Leo Messi, né le 24 juin 1987 à Rosario en Argentine, est un footballeur international argentin jouant au poste d'attaquant à l’Inter Miami CF en MLS. Octuple vainqueur du Ballon d'or, un record, il est considéré comme l'un des meilleurs joueurs de football toutes générations confondues."
-                android:textColor="#515151"
-                android:lineSpacingExtra="3dp"
                 android:textSize="15sp"/>
 
 
@@ -126,8 +126,8 @@
                             android:layout_margin="15dp"
                             android:src="@drawable/view_icon"
                             android:layout_gravity="center"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
                             />
 
 
@@ -138,11 +138,11 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:fontFamily="@font/main_font"
                                 android:id="@+id/views"
                                 android:maxLines="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:text="12.5 K"
                                 android:textColor="#2B2B2B"
                                 android:lineSpacingExtra="3dp"
                                 android:textSize="14sp"/>
@@ -177,8 +177,8 @@
                             android:layout_margin="15dp"
                             android:src="@drawable/heart_icon"
                             android:layout_gravity="center"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
                             />
 
 
@@ -189,11 +189,11 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:fontFamily="@font/main_font"
                                 android:id="@+id/likes"
                                 android:maxLines="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:text="12.5 K"
                                 android:textColor="#2B2B2B"
                                 android:lineSpacingExtra="3dp"
                                 android:textSize="14sp"/>
@@ -227,8 +227,8 @@
                             android:layout_margin="15dp"
                             android:src="@drawable/speech_bubble_icon"
                             android:layout_gravity="center"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
                             />
 
 
@@ -239,11 +239,11 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:fontFamily="@font/main_font"
                                 android:id="@+id/comments"
                                 android:maxLines="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:text="12.5 K"
                                 android:textColor="#2B2B2B"
                                 android:lineSpacingExtra="3dp"
                                 android:textSize="14sp"/>
@@ -277,8 +277,8 @@
                             android:layout_margin="15dp"
                             android:src="@drawable/share_icon"
                             android:layout_gravity="center"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
                             />
 
 
@@ -289,34 +289,21 @@
                             android:layout_height="wrap_content">
 
                             <TextView
+                                android:fontFamily="@font/main_font"
                                 android:id="@+id/shares"
                                 android:maxLines="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:text="12.5 K"
                                 android:textColor="#2B2B2B"
                                 android:lineSpacingExtra="3dp"
                                 android:textSize="14sp"/>
-
-
                         </LinearLayout>
-
-
-
 
                     </LinearLayout>
 
-
                 </FrameLayout>
 
-
-
-
             </LinearLayout>
-
-
-
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

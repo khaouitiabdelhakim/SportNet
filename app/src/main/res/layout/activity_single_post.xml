@@ -48,7 +48,7 @@
 
                         <ImageView
                             android:id="@+id/profilePicture"
-                            android:src="@drawable/picture_profile"
+                            android:src="@drawable/rounded_profile"
                             android:layout_gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -63,22 +63,24 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:fontFamily="@font/main_font"
                             android:id="@+id/username"
                             android:maxLines="1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="khaouitiabdelhakim12"
+                            android:text="username"
                             android:textColor="#171717"
                             android:lineSpacingExtra="3dp"
                             android:textSize="16sp"/>
 
 
                         <TextView
+                            android:fontFamily="@font/main_font"
                             android:id="@+id/time"
                             android:maxLines="1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="12 March 2023"
+                            android:text="--"
                             android:textColor="#373737"
                             android:lineSpacingExtra="3dp"
                             android:textSize="13sp"/>
@@ -95,10 +97,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="230dp"
                     android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/RoundedCornerImageView"
                     />
 
 
                 <TextView
+                    android:fontFamily="@font/main_font"
                     android:layout_marginBottom="20dp"
                     android:id="@+id/text"
                     android:layout_marginHorizontal="10dp"
@@ -147,11 +151,12 @@
                                 android:layout_height="wrap_content">
 
                                 <TextView
+                                    android:fontFamily="@font/main_font"
                                     android:id="@+id/views"
                                     android:maxLines="1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:text="12.5 K"
+
                                     android:textColor="#2B2B2B"
                                     android:lineSpacingExtra="3dp"
                                     android:textSize="14sp"/>
@@ -198,11 +203,12 @@
                                 android:layout_height="wrap_content">
 
                                 <TextView
+                                    android:fontFamily="@font/main_font"
                                     android:id="@+id/likes"
                                     android:maxLines="1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:text="12.5 K"
+
                                     android:textColor="#2B2B2B"
                                     android:lineSpacingExtra="3dp"
                                     android:textSize="14sp"/>
@@ -248,11 +254,12 @@
                                 android:layout_height="wrap_content">
 
                                 <TextView
+                                    android:fontFamily="@font/main_font"
                                     android:id="@+id/comments"
                                     android:maxLines="1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:text="12.5 K"
+
                                     android:textColor="#2B2B2B"
                                     android:lineSpacingExtra="3dp"
                                     android:textSize="14sp"/>
@@ -298,11 +305,11 @@
                                 android:layout_height="wrap_content">
 
                                 <TextView
+                                    android:fontFamily="@font/main_font"
                                     android:id="@+id/shares"
                                     android:maxLines="1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:text="12.5 K"
                                     android:textColor="#2B2B2B"
                                     android:lineSpacingExtra="3dp"
                                     android:textSize="14sp"/>

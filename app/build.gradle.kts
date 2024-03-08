@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.abdelhakim.sportnet"
+    namespace = "com.ensias.sportnet"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.abdelhakim.sportnet"
+        applicationId = "com.ensias.sportnet"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -69,14 +69,14 @@
 
                     <TextView
                         android:id="@+id/date"
-                        android:fontFamily="@font/main_font"
-                        android:maxLines="1"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/main_font"
+                        android:lineSpacingExtra="3dp"
+                        android:maxLines="1"
                         android:text="12 March 2023"
                         android:textColor="#373737"
-                        android:lineSpacingExtra="3dp"
-                        android:textSize="13sp"/>
+                        android:textSize="13sp" />
 
 
                 </LinearLayout>

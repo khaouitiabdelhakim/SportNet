@@ -40,6 +40,7 @@
                     android:src="@drawable/logo_splash"/>
 
                 <TextView
+                    android:fontFamily="@font/main_font"
                     android:textAlignment="center"
                     android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
@@ -48,6 +49,7 @@
                     android:textColor="@color/black"
                     android:textSize="25sp"/>
                 <TextView
+                    android:fontFamily="@font/main_font"
                     android:textAlignment="center"
                     android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
@@ -62,7 +64,7 @@
 
         <FrameLayout
             android:layout_marginHorizontal="12dp"
-            android:background="@drawable/blue_gradient"
+            android:background="@drawable/gray_gradient"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:layout_width="match_parent"
@@ -105,6 +107,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:fontFamily="@font/main_font"
                         android:textAlignment="center"
                         android:paddingHorizontal="10dp"
                         android:background="@android:color/transparent"
@@ -131,6 +134,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:fontFamily="@font/main_font"
                         android:textAlignment="center"
                         android:paddingHorizontal="10dp"
                         android:background="@android:color/transparent"
@@ -177,6 +181,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:fontFamily="@font/main_font"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
                                 android:layout_width="wrap_content"
@@ -205,6 +210,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:fontFamily="@font/main_font"
                     android:id="@+id/forgottenPassword"
                     android:padding="20dp"
                     android:layout_gravity="center"
@@ -213,7 +219,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Password Forgotten?"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:lineSpacingExtra="3dp"
                     android:textSize="16sp"/>
 
@@ -235,7 +241,7 @@
 
 
             <TextView
-
+                android:fontFamily="@font/main_font"
                 android:background="@android:color/transparent"
                 android:layout_marginVertical="15dp"
                 android:layout_width="match_parent"
@@ -247,6 +253,7 @@
 
 
             <TextView
+                android:fontFamily="@font/main_font"
                 android:id="@+id/signUpIfAccountNo"
                 android:padding="15dp"
                 android:background="@android:color/transparent"

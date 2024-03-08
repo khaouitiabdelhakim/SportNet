@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".showers.AccountShowerActivity">
+
+
+
+
+    <LinearLayout
+        android:paddingTop="35dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_margin="5dp"
+                android:id="@+id/profileBanner"
+                app:shapeAppearanceOverlay="@style/RoundedCornerImageView"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                />
+
+            <FrameLayout
+                android:layout_marginStart="20dp"
+                android:layout_gravity="bottom|start"
+                android:layout_width="90dp"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/corners_rounded"
+                android:layout_height="90dp">
+
+                <androidx.cardview.widget.CardView
+                    android:elevation="0dp"
+                    app:cardCornerRadius="200dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_width="82dp"
+                    android:backgroundTint="@color/white"
+                    android:background="@drawable/corners_rounded"
+                    android:layout_height="82dp">
+
+                    <ImageView
+
+                        android:src="@drawable/rounded_profile"
+                        android:id="@+id/profilePicture"
+                        android:layout_gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+            </FrameLayout>
+
+            <ImageView
+                app:tint="@color/white"
+                android:id="@+id/editProfile"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/edit_icon"
+                android:layout_gravity="top|end"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_marginHorizontal="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:fontFamily="@font/main_font"
+                        android:id="@+id/profileUsername"
+                        android:maxLines="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Username"
+                        android:textColor="#171717"
+                        android:textSize="18sp"/>
+
+
+                    <TextView
+                        android:fontFamily="@font/main_font"
+                        android:id="@+id/profileDate"
+                        android:layout_marginHorizontal="10dp"
+                        android:maxLines="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=". since 12 Dec 2023"
+                        android:textColor="#686868"
+                        android:lineSpacingExtra="3dp"
+                        android:textSize="12sp"/>
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:fontFamily="@font/main_font"
+                    android:id="@+id/profileDescription"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:maxLines="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="description"
+                    android:textColor="#353535"
+                    android:lineSpacingExtra="3dp"
+                    android:textSize="13sp"/>
+
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_weight="1"
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="10dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/postsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="10dp"
+                android:paddingBottom="120dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"/>
+
+
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="invisible"
+        android:indeterminateTint="#676767"
+        android:progress="10"
+        android:id="@+id/loadingProgress"
+        android:layout_gravity="center"
+        android:layout_width="25dp"
+        android:layout_height="25dp"/>
+
+    <LinearLayout
+        android:visibility="invisible"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/result"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/no_result"
+            android:layout_gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:tint="#7A7A7A"
+            />
+
+
+        <TextView
+            android:fontFamily="@font/main_font"
+            android:id="@+id/message"
+            android:layout_marginTop="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="This account has no posts yet"
+            android:textColor="#7A7A7A"
+            android:lineSpacingExtra="3dp"
+            android:textSize="13sp"/>
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

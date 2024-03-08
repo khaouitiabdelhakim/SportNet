@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">SportNet</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="home_tab">Home</string>
-    <string name="rooms_tab">Rooms</string>
+    <string name="account_tab">Accounts</string>
     <string name="profile_tab">Profile</string>
 </resources>

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "133270277992",
+    "firebase_url": "https://sportnetmobile-default-rtdb.firebaseio.com",
     "project_id": "sportnetmobile",
     "storage_bucket": "sportnetmobile.appspot.com"
   },
@@ -9,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:133270277992:android:86653d02b7d96d2fced0dd",
         "android_client_info": {
-          "package_name": "com.abdelhakim.sportnet"
+          "package_name": "com.ensias.sportnet"
         }
       },
       "oauth_client": [],
