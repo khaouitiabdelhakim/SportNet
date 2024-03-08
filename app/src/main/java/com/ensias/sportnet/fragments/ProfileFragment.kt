@@ -39,7 +39,7 @@ class ProfileFragment : Fragment() {
                 .into(binding.profile)
         } else {
             binding.email.text = "sign in to get more features"
-            binding.authenticationType.text = "Sign IN"
+            binding.authenticationType.text = "Sign In"
         }
 
         binding.signOut.setOnClickListener {

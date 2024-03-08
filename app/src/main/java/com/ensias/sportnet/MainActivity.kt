@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         lateinit var currentUser: User
-        lateinit var userLikes: ArrayList<String>
-        lateinit var userCommentsLikes: ArrayList<String>
+        var userLikes = ArrayList<String>()
+        var userCommentsLikes = ArrayList<String>()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

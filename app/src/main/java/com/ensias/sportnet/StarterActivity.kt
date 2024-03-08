@@ -45,13 +45,7 @@ class StarterActivity : AppCompatActivity() {
                     try {
                         MainActivity.userLikes = gson.fromJson(user.likes, Utils.arrayListOfStringsToken)
                         MainActivity.userCommentsLikes = gson.fromJson(user.commentsLikes, Utils.arrayListOfStringsToken)
-                    } catch (_:Exception){
-                        MainActivity.userLikes = ArrayList()
-                        MainActivity.userCommentsLikes = ArrayList()
-                    }
-                } else {
-                    MainActivity.userLikes = ArrayList()
-                    MainActivity.userCommentsLikes = ArrayList()
+                    } catch (_:Exception){ }
                 }
                 startMainActivity()
             }

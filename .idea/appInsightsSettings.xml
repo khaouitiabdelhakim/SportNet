@@ -27,7 +27,7 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.abdelhakim.sportnet" />
+                  <option name="appId" value="com.ensias.sportnet" />
                   <option name="mobileSdkAppId" value="1:133270277992:android:86653d02b7d96d2fced0dd" />
                   <option name="projectId" value="sportnetmobile" />
                   <option name="projectNumber" value="133270277992" />
