@@ -3,6 +3,7 @@ package com.ensias.sportnet.showers
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,13 +15,14 @@ import com.ensias.sportnet.utils.Utils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.ensias.sportnet.MainActivity
+import com.ensias.sportnet.adapters.OwnPostAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class AccountShowerActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityAccountShowerBinding
-    lateinit var adapter: PostAdapter
+    lateinit var adapter: OwnPostAdapter
     private lateinit var database: FirebaseDatabase
     private lateinit var auth: FirebaseAuth
 
@@ -35,7 +37,7 @@ class AccountShowerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.postsRecyclerView.layoutManager = LinearLayoutManager(this@AccountShowerActivity, LinearLayoutManager.VERTICAL, false)
-        adapter = PostAdapter(this, posts)
+        adapter = OwnPostAdapter(this, posts)
         binding.postsRecyclerView.adapter = adapter
 
         database = FirebaseDatabase.getInstance()
@@ -95,9 +97,12 @@ class AccountShowerActivity : AppCompatActivity() {
 
     private fun loadUserPosts(userId: String?) {
         userId?.let {
-            val postsReference = database.getReference("posts").orderByChild("userId").equalTo(userId)
+            val postsReference = database.getReference("posts")
 
-            postsReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            // Check if userId is not null before executing the query
+            val query = postsReference.orderByChild("userId").equalTo(userId)
+
+            query.addListenerForSingleValueEvent(object : ValueEventListener {
                 @SuppressLint("NotifyDataSetChanged")
                 override fun onDataChange(snapshot: DataSnapshot) {
                     posts.clear()
@@ -114,10 +119,17 @@ class AccountShowerActivity : AppCompatActivity() {
 
                 override fun onCancelled(error: DatabaseError) {
                     // Handle error
+                    Log.e("Firebase", "Error loading user posts: ${error.message}")
                     binding.loadingProgress.visibility = View.GONE
                     binding.result.visibility = View.VISIBLE
                 }
             })
+        } ?: run {
+            // Handle case when userId is null
+            Log.e("Firebase", "userId is null")
+            binding.loadingProgress.visibility = View.GONE
+            binding.result.visibility = View.VISIBLE
         }
     }
+
 }
