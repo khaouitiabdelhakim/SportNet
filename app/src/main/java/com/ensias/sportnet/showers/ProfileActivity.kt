@@ -18,6 +18,10 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.*
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -30,13 +34,10 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var currentUser: User
     private var selectedContentUri: Uri? = null
 
-    private val getContent: ActivityResultLauncher<Intent> = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val intent = result.data
-            if (intent != null) {
-                intent.data?.let { uri ->
+    private val getContent: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.data?.let { uri ->
                     selectedContentUri = uri
                     Glide.with(this)
                         .load(selectedContentUri)
@@ -45,7 +46,6 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
         }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,13 +74,15 @@ class ProfileActivity : AppCompatActivity() {
         userRef.get().addOnSuccessListener { snapshot ->
             if (snapshot.exists()) {
                 currentUser = snapshot.getValue(User::class.java)!!
-                binding.username.text = currentUser.username
-                binding.email.text = currentUser.email
-                binding.description.setText(currentUser.description)
-                Glide.with(this)
-                    .load(currentUser.profilePictureUrl)
-                    .apply(RequestOptions().circleCrop())
-                    .into(binding.profile)
+                with(binding) {
+                    username.text = currentUser.username
+                    email.text = currentUser.email
+                    description.setText(currentUser.description)
+                    Glide.with(this@ProfileActivity)
+                        .load(currentUser.profilePictureUrl)
+                        .apply(RequestOptions().circleCrop())
+                        .into(profile)
+                }
             }
         }.addOnFailureListener { exception ->
             Log.e("ProfileActivity", "Error fetching current user: ${exception.message}")
@@ -96,95 +98,63 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun updateProfile() {
         val newDescription = binding.description.text.toString().trim()
-        if (newDescription.isNotEmpty() || selectedContentUri != null) {
-            binding.updateProfile.isClickable = false
-            binding.updateProfileText.visibility = View.INVISIBLE
-            binding.updateProfileProgress.visibility = View.VISIBLE
+        if (newDescription.isEmpty() && selectedContentUri == null) return
 
-            if (newDescription.isNotEmpty()) {
-                currentUser.description = newDescription
-                userRef.setValue(currentUser)
-                    .addOnSuccessListener {
-                        Log.d("ProfileActivity", "Profile description updated successfully")
+        binding.updateProfile.isClickable = false
+        binding.updateProfileText.visibility = View.INVISIBLE
+        binding.updateProfileProgress.visibility = View.VISIBLE
 
-                        if (selectedContentUri != null) {
-                            storageRef.putFile(selectedContentUri!!)
-                                .addOnSuccessListener { taskSnapshot ->
-                                    taskSnapshot.metadata!!.reference!!.downloadUrl
-                                        .addOnSuccessListener { uri ->
-                                            currentUser.profilePictureUrl = uri.toString()
-                                            userRef.setValue(currentUser)
-                                                .addOnSuccessListener {
-                                                    Log.d("ProfileActivity", "Profile picture updated successfully")
-                                                    binding.updateProfile.isClickable = true
-                                                    binding.updateProfileText.visibility = View.VISIBLE
-                                                    binding.updateProfileProgress.visibility = View.INVISIBLE
-                                                }
-                                                .addOnFailureListener { exception ->
-                                                    Log.e("ProfileActivity", "Error updating profile picture: ${exception.message}")
-                                                    binding.updateProfile.isClickable = true
-                                                    binding.updateProfileText.visibility = View.VISIBLE
-                                                    binding.updateProfileProgress.visibility = View.INVISIBLE
-                                                }
-                                        }
-                                        .addOnFailureListener { exception ->
-                                            Log.e("ProfileActivity", "Error getting download URL: ${exception.message}")
-                                            binding.updateProfile.isClickable = true
-                                            binding.updateProfileText.visibility = View.VISIBLE
-                                            binding.updateProfileProgress.visibility = View.INVISIBLE
-                                        }
-                                }
-                                .addOnFailureListener { exception ->
-                                    Log.e("ProfileActivity", "Error uploading profile picture: ${exception.message}")
-                                    binding.updateProfile.isClickable = true
-                                    binding.updateProfileText.visibility = View.VISIBLE
-                                    binding.updateProfileProgress.visibility = View.INVISIBLE
-                                }
-                        }
+        if (newDescription.isNotEmpty()) {
+            currentUser.description = newDescription
+            updateUser()
+        } else {
+            selectedContentUri?.let {
+                uploadProfilePicture(it)
+            }
+        }
+    }
+
+    private fun updateUser() {
+        userRef.setValue(currentUser)
+            .addOnSuccessListener {
+                Log.d("ProfileActivity", "Profile description updated successfully")
+                selectedContentUri?.let {
+                    uploadProfilePicture(it)
+                } ?: updateUIAfterUpdate()
+            }
+            .addOnFailureListener { exception ->
+                handleProfileUpdateError(exception)
+            }
+    }
+
+    private fun uploadProfilePicture(uri: Uri) {
+        storageRef.putFile(uri)
+            .addOnSuccessListener { taskSnapshot ->
+                taskSnapshot.metadata!!.reference!!.downloadUrl
+                    .addOnSuccessListener { downloadUri ->
+                        currentUser.profilePictureUrl = downloadUri.toString()
+                        updateUser()
                     }
                     .addOnFailureListener { exception ->
-                        Log.e("ProfileActivity", "Error updating profile description: ${exception.message}")
-                        binding.updateProfile.isClickable = true
-                        binding.updateProfileText.visibility = View.VISIBLE
-                        binding.updateProfileProgress.visibility = View.INVISIBLE
+                        handleProfileUpdateError(exception)
                     }
-            } else {
-                if (selectedContentUri != null) {
-                    storageRef.putFile(selectedContentUri!!)
-                        .addOnSuccessListener { taskSnapshot ->
-                            taskSnapshot.metadata!!.reference!!.downloadUrl
-                                .addOnSuccessListener { uri ->
-                                    currentUser.profilePictureUrl = uri.toString()
-                                    userRef.setValue(currentUser)
-                                        .addOnSuccessListener {
-                                            Log.d("ProfileActivity", "Profile picture updated successfully")
-                                            binding.updateProfile.isClickable = true
-                                            binding.updateProfileText.visibility = View.VISIBLE
-                                            binding.updateProfileProgress.visibility = View.INVISIBLE
-                                        }
-                                        .addOnFailureListener { exception ->
-                                            Log.e("ProfileActivity", "Error updating profile picture: ${exception.message}")
-                                            binding.updateProfile.isClickable = true
-                                            binding.updateProfileText.visibility = View.VISIBLE
-                                            binding.updateProfileProgress.visibility = View.INVISIBLE
-                                        }
-                                }
-                                .addOnFailureListener { exception ->
-                                    Log.e("ProfileActivity", "Error getting download URL: ${exception.message}")
-                                    binding.updateProfile.isClickable = true
-                                    binding.updateProfileText.visibility = View.VISIBLE
-                                    binding.updateProfileProgress.visibility = View.INVISIBLE
-                                }
-                        }
-                        .addOnFailureListener { exception ->
-                            Log.e("ProfileActivity", "Error uploading profile picture: ${exception.message}")
-                            binding.updateProfile.isClickable = true
-                            binding.updateProfileText.visibility = View.VISIBLE
-                            binding.updateProfileProgress.visibility = View.INVISIBLE
-                        }
-                }
             }
+            .addOnFailureListener { exception ->
+                handleProfileUpdateError(exception)
+            }
+    }
 
-        }
+    private fun updateUIAfterUpdate() {
+        Log.d("ProfileActivity", "Profile picture updated successfully")
+        binding.updateProfile.isClickable = true
+        binding.updateProfileText.visibility = View.VISIBLE
+        binding.updateProfileProgress.visibility = View.INVISIBLE
+    }
+
+    private fun handleProfileUpdateError(exception: Exception) {
+        Log.e("ProfileActivity", "Error updating profile: ${exception.message}")
+        binding.updateProfile.isClickable = true
+        binding.updateProfileText.visibility = View.VISIBLE
+        binding.updateProfileProgress.visibility = View.INVISIBLE
     }
 }
