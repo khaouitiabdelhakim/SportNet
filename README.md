@@ -53,7 +53,8 @@ Fork this repository if you wish to make changes or contribute improvements.
 ## License
 
 ```
-Copyright 2024 Imad AHADAD - Mehdi Elargoubi - Bengmah Anass - KHAOUITI Abdelhakim Bowred by KHAOUITI Apps
+Copyright 2024 Imad AHADAD - Mehdi Elargoubi - Bengmah Anass - KHAOUITI Abdelhakim
+powered by KHAOUITI Apps
 
 Licensed under the MIT License
 You may obtain a copy of the License at
