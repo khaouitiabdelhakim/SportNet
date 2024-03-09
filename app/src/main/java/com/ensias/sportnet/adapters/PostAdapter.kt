@@ -40,9 +40,6 @@ import java.util.regex.Pattern
 class PostAdapter(private val context: Context, private var posts: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.MyHolder>(){
 
 
-    interface ShareListener {
-        fun onShareSuccess(postId: String)
-    }
 
     // for loading more posts
     private val postsPerPage = 15
@@ -180,6 +177,8 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
         holders[position] = holder
 
 
+        holder.share.setOnClickListener {}
+
         holder.profileSection.setOnClickListener {
             val intent = Intent(context, AccountShowerActivity::class.java)
             intent.putExtra("accountId",posts[position].userId)
@@ -260,9 +259,6 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
                     // Check if sharing was successful
                     val shareSuccessful = true // Set this to true if sharing was successful, false otherwise
                     if (shareSuccessful) {
-                        // Update shares count locally
-                        posts[position].shares++
-
                         // Update shares count in Firebase
                         val postId = posts[position].id
                         updateSharesInRealtimeDatabase(postId)
@@ -274,26 +270,9 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
             )
         }
 
-
-
         updateViewsInRealtimeDatabase(posts[position].id, position)
 
 
-    }
-
-    private fun updateSharesInRealtimeDatabase(postId: String) {
-        val reelsReference = database.getReference("posts/$postId/shares")
-
-        // Increment shares count by 1
-        reelsReference.setValue(ServerValue.increment(1))
-            .addOnSuccessListener {
-                // Handle success
-                Log.i("UpdateShares", "Shares count updated successfully")
-            }
-            .addOnFailureListener { e ->
-                // Handle failure
-                Log.e("UpdateShares", "Failed to update shares count: ${e.message}")
-            }
     }
 
     fun loadMorePosts() {
@@ -342,6 +321,22 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
 
     override fun getItemCount(): Int {
         return posts.size
+    }
+
+
+    private fun updateSharesInRealtimeDatabase(postId: String) {
+        val reelsReference = database.getReference("posts/$postId/shares")
+
+        // Increment shares count by 1
+        reelsReference.setValue(ServerValue.increment(1))
+            .addOnSuccessListener {
+                // Handle success
+                Log.i("UpdateShares", "Shares count updated successfully")
+            }
+            .addOnFailureListener { e ->
+                // Handle failure
+                Log.e("UpdateShares", "Failed to update shares count: ${e.message}")
+            }
     }
 
 

@@ -171,9 +171,6 @@ class OwnPostAdapter(private val context: Context, private var posts: ArrayList<
                     // Check if sharing was successful
                     val shareSuccessful = true // Set this to true if sharing was successful, false otherwise
                     if (shareSuccessful) {
-                        // Update shares count locally
-                        posts[position].shares++
-
                         // Update shares count in Firebase
                         val postId = posts[position].id
                         updateSharesInRealtimeDatabase(postId)

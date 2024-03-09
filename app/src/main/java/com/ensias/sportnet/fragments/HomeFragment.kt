@@ -117,7 +117,4 @@ class HomeFragment : Fragment() {
 
     }
 
-
-
-
 }
