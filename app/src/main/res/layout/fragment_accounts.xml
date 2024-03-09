@@ -72,15 +72,6 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:layout_margin="10dp"
-                android:id="@+id/settings"
-                android:src="@drawable/settings_icon"
-                android:layout_gravity="center"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                />
-
         </LinearLayout>
 
         <FrameLayout

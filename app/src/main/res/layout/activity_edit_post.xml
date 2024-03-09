@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".showers.ProfileActivity">
+    android:layout_height="match_parent"
+    tools:context=".editors.EditPostActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_marginBottom="80dp"
@@ -31,13 +31,13 @@
                 android:layout_height="wrap_content">
 
                 <androidx.cardview.widget.CardView
-                    app:cardCornerRadius="50dp"
+                    app:cardCornerRadius="30dp"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
-                    android:layout_width="85dp"
+                    android:layout_width="45dp"
                     android:backgroundTint="@color/white"
                     android:background="@drawable/corners_rounded"
-                    android:layout_height="85dp">
+                    android:layout_height="45dp">
 
                     <ImageView
                         android:id="@+id/profile"
@@ -68,24 +68,23 @@
 
 
                     <TextView
-                        android:id="@+id/email"
-                        android:fontFamily="@font/main_font"
-                        android:maxLines="1"
+                        android:id="@+id/date"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="email@domain.com"
-                        android:textColor="#373737"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/main_font"
                         android:lineSpacingExtra="3dp"
-                        android:textSize="13sp"/>
+                        android:maxLines="1"
+                        android:text="12 March 2023"
+                        android:textColor="#373737"
+                        android:textSize="13sp" />
 
 
                 </LinearLayout>
 
             </LinearLayout>
 
-
             <EditText
-                android:id="@+id/description"
+                android:id="@+id/text"
                 android:fontFamily="@font/main_font"
                 android:gravity="start"
                 android:layout_weight="1"
@@ -93,21 +92,11 @@
                 android:maxLines="20"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:hint="write you profile description"
+                android:hint="Update the post caption"
                 android:textColorHint="#8C8C8C"
                 android:textColor="#515151"
                 android:lineSpacingExtra="3dp"
                 android:textSize="15sp"/>
-
-
-            <FrameLayout
-                android:id="@+id/attachmentZone"
-                android:layout_marginHorizontal="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-            </FrameLayout>
 
 
             <androidx.cardview.widget.CardView
@@ -155,7 +144,7 @@
                             android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="Update Profile"
+                            android:text="Update Post"
                             android:textColor="@color/white"
                             android:lineSpacingExtra="3dp"
                             android:textSize="15sp"/>
@@ -183,9 +172,7 @@
 
 
 
-
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.ensias.sportnet.fragments
 
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -65,7 +66,28 @@ class ProfileFragment : Fragment() {
 
         }
 
+        binding.googlePlay.setOnClickListener {
+            openLink("https://play.google.com/store/apps/details?id=com.ensias.sportnet")
+        }
+
+        binding.privacyPolicy.setOnClickListener {
+            openLink("https://sportnetmobile.web.app/privacy_policy.html")
+        }
+
+        binding.instagram.setOnClickListener {
+            openLink("https://www.instagram.com/")
+        }
+
+        binding.linkedin.setOnClickListener {
+            openLink("https://www.linkedin.com/")
+        }
+
         return view
+    }
+
+    private fun openLink(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
     }
 
     private fun signOut() {

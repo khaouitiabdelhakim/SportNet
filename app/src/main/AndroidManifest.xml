@@ -13,6 +13,9 @@
         android:theme="@style/splash_screen"
         tools:targetApi="31">
         <activity
+            android:name=".editors.EditPostActivity"
+            android:exported="false" />
+        <activity
             android:name=".showers.ProfileActivity"
             android:exported="false" />
         <activity

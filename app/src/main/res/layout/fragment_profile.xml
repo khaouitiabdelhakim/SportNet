@@ -154,7 +154,10 @@
                         </FrameLayout>
 
 
+
+
                     </androidx.cardview.widget.CardView>
+
 
                 </LinearLayout>
 
@@ -187,6 +190,10 @@
 
 
                     <androidx.cardview.widget.CardView
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:id="@+id/googlePlay"
                         app:cardCornerRadius="10dp"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="15dp"
@@ -204,8 +211,8 @@
                                 android:layout_margin="15dp"
                                 android:src="@drawable/playstore"
                                 android:layout_gravity="center"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 />
 
 
@@ -222,7 +229,7 @@
                                 android:text="Rate Us On Google Play"
                                 android:textColor="@color/black"
                                 android:lineSpacingExtra="3dp"
-                                android:textSize="18sp"/>
+                                android:textSize="15sp"/>
 
 
                         <TextView
@@ -247,6 +254,10 @@
 
 
                     <androidx.cardview.widget.CardView
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:id="@+id/privacyPolicy"
                         app:cardCornerRadius="10dp"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="15dp"
@@ -264,8 +275,8 @@
                                 android:layout_margin="15dp"
                                 android:src="@drawable/google"
                                 android:layout_gravity="center"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 />
 
 
@@ -282,7 +293,7 @@
                                     android:text="Our Privacy Policy"
                                     android:textColor="@color/black"
                                     android:lineSpacingExtra="3dp"
-                                    android:textSize="18sp"/>
+                                    android:textSize="15sp"/>
 
 
                                 <TextView
@@ -308,6 +319,10 @@
 
 
                     <androidx.cardview.widget.CardView
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:id="@+id/instagram"
                         app:cardCornerRadius="10dp"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="15dp"
@@ -325,8 +340,8 @@
                                 android:layout_margin="15dp"
                                 android:src="@drawable/instagram"
                                 android:layout_gravity="center"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 />
 
 
@@ -343,7 +358,7 @@
                                     android:text="On Instagram"
                                     android:textColor="@color/black"
                                     android:lineSpacingExtra="3dp"
-                                    android:textSize="18sp"/>
+                                    android:textSize="15sp"/>
 
 
                                 <TextView
@@ -369,6 +384,10 @@
 
 
                     <androidx.cardview.widget.CardView
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:id="@+id/linkedin"
                         app:cardCornerRadius="10dp"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="15dp"
@@ -376,7 +395,7 @@
                         android:layout_height="wrap_content">
 
                         <LinearLayout
-                            android:foreground="?attr/selectableItemBackground"
+
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
@@ -386,8 +405,8 @@
                                 android:layout_margin="15dp"
                                 android:src="@drawable/linkedin"
                                 android:layout_gravity="center"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
                                 />
 
 
@@ -404,7 +423,7 @@
                                     android:text="Connect To LinkedIn"
                                     android:textColor="@color/black"
                                     android:lineSpacingExtra="3dp"
-                                    android:textSize="18sp"/>
+                                    android:textSize="15sp"/>
 
 
                                 <TextView

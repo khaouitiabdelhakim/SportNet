@@ -82,75 +82,44 @@ class CommentAdapter (private val context: Context, private var comments: ArrayL
 
 
             holder.likeIcon.setOnClickListener {
-
                 val user = authentication.currentUser
                 holder.likeIcon.setColorFilter(Color.RED)
+
                 if (user != null) {
-
                     val reelsReference = database.getReference("users/${user.uid}/commentsLikes")
-
                     reelsReference.get().addOnSuccessListener { snapshot ->
-                        if (snapshot.exists()) {
-                            val editor = context.getSharedPreferences("SportNet", 0).edit()
-                            val gson = GsonBuilder().create()
-                            val likes: ArrayList<String> = gson.fromJson(snapshot.value.toString(), Utils.arrayListOfStringsToken)
-                            val commentId = comments[position].id
-                            if (likes.contains(commentId)) {
-                                holder.likeIcon.setImageResource(R.drawable.empty_heart_icon)
-                                likes.remove(commentId)
-                                userCommentsLikes.remove(commentId)
-                                comments[position].likes--
-                                holder.likes.text  = comments[position].likes.toString()
-                                holder.likeIcon.setColorFilter(Color.BLACK)
-                                updateLikesInRealtimeDatabase(commentId, false)
-                            } else {
-                                holder.likeIcon.setImageResource(R.drawable.full_heart_icon)
-                                likes.add(commentId)
-                                userCommentsLikes.add(commentId)
-                                comments[position].likes++
-                                holder.likes.text  = comments[position].likes.toString()
-                                holder.likeIcon.setColorFilter(Color.RED)
-                                updateLikesInRealtimeDatabase(commentId, true)
-                            }
-                            val likesJson = GsonBuilder().create().toJson(likes)
-                            updateUserLikes(user.uid,likes, likesJson)
-                            editor.putString("likes", likesJson)
-                            editor.apply()
+                        val gson = GsonBuilder().create()
+                        val likes: ArrayList<String> = gson.fromJson(snapshot.value.toString(), Utils.arrayListOfStringsToken)
+                        val commentId = comments[position].id
+                        val isLiked = likes.contains(commentId)
+
+                        if (isLiked) {
+                            likes.remove(commentId)
+                            userCommentsLikes.remove(commentId)
+                            comments[position].likes--
+                            holder.likeIcon.setImageResource(R.drawable.empty_heart_icon)
+                            holder.likeIcon.setColorFilter(Color.BLACK)
                         } else {
-                            val editor = context.getSharedPreferences("SportNet", 0).edit()
-                            val likes = userCommentsLikes
-                            val commentId = comments[position].id
-                            if (likes.contains(commentId)) {
-                                holder.likeIcon.setImageResource(R.drawable.empty_heart_icon)
-                                likes.remove(commentId)
-                                userCommentsLikes.remove(commentId)
-                                comments[position].likes--
-                                holder.likes.text  = comments[position].likes.toString()
-                                holder.likeIcon.setColorFilter(Color.BLACK)
-                                updateLikesInRealtimeDatabase(commentId, false)
-                            } else {
-                                holder.likeIcon.setImageResource(R.drawable.full_heart_icon)
-                                likes.add(commentId)
-                                userCommentsLikes.add(commentId)
-                                comments[position].likes++
-                                holder.likes.text  = comments[position].likes.toString()
-                                holder.likeIcon.setColorFilter(Color.RED)
-                                updateLikesInRealtimeDatabase(commentId, true)
-                            }
-                            val likesJson = GsonBuilder().create().toJson(likes)
-                            updateUserLikes(user.uid,likes, likesJson)
-                            editor.putString("likes", likesJson)
-                            editor.apply()
+                            likes.add(commentId)
+                            userCommentsLikes.add(commentId)
+                            comments[position].likes++
+                            holder.likeIcon.setImageResource(R.drawable.full_heart_icon)
+                            holder.likeIcon.setColorFilter(Color.RED)
                         }
+
+                        holder.likes.text = comments[position].likes.toString()
+                        updateLikesInRealtimeDatabase(commentId, !isLiked)
+                        val likesJson = GsonBuilder().create().toJson(likes)
+                        updateUserLikes(user.uid, likes, likesJson)
                     }.addOnFailureListener { exception ->
+                        Log.e("LikeAction", "Failed to fetch likes: ${exception.message}")
                     }
-                }
-                else {
+                } else {
                     val intent = Intent(context, SignInActivity::class.java)
                     ContextCompat.startActivity(context, intent, null)
                 }
-
             }
+
 
         } catch (_: Exception) {}
 

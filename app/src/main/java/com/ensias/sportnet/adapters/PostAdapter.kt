@@ -24,6 +24,8 @@ import com.ensias.sportnet.showers.SinglePostActivity
 import com.ensias.sportnet.utils.Utils
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.ensias.sportnet.MainActivity
+import com.ensias.sportnet.editors.EditPostActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -38,6 +40,9 @@ import java.util.regex.Pattern
 class PostAdapter(private val context: Context, private var posts: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.MyHolder>(){
 
 
+    interface ShareListener {
+        fun onShareSuccess(postId: String)
+    }
 
     // for loading more posts
     private val postsPerPage = 15
@@ -77,6 +82,8 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
         val profile = binding.profilePicture
         val time = binding.time
 
+        val edit = binding.edit
+
         val root = binding.root
     }
 
@@ -92,6 +99,16 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
     override fun onBindViewHolder(holder: MyHolder, @SuppressLint("RecyclerView") position: Int) {
 
 
+        if (MainActivity.currentUser.id == posts[position].userId) {
+            holder.edit.visibility = View.VISIBLE
+            holder.edit.setOnClickListener {
+                val intent = Intent(context, EditPostActivity::class.java)
+                intent.putExtra("postId",posts[position].id)
+                ContextCompat.startActivity(context, intent, null)
+            }
+        } else {
+            holder.edit.visibility = View.INVISIBLE
+        }
 
         holder.root.setOnClickListener {
             val intent = Intent(context, SinglePostActivity::class.java)
@@ -163,8 +180,6 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
         holders[position] = holder
 
 
-        holder.share.setOnClickListener {}
-
         holder.profileSection.setOnClickListener {
             val intent = Intent(context, AccountShowerActivity::class.java)
             intent.putExtra("accountId",posts[position].userId)
@@ -194,75 +209,91 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
 
             val user = authentication.currentUser
             if (user != null) {
-
                 val reelsReference = database.getReference("users/${user.uid}/likes")
-
                 reelsReference.get().addOnSuccessListener { snapshot ->
-                    if (snapshot.exists()) {
-                        val editor = context.getSharedPreferences("SportNet", 0).edit()
-                        val gson = GsonBuilder().create()
-                        val likes: ArrayList<String> = gson.fromJson(snapshot.value.toString(), Utils.arrayListOfStringsToken)
-                        val postId = posts[position].id
-                        if (likes.contains(postId)) {
-                            holder.likeIcon.setImageResource(R.drawable.empty_heart_icon)
-                            likes.remove(postId)
-                            userLikes.remove(postId)
-                            posts[position].likes--
-                            holder.likes.text  = posts[position].likes.toString()
-                            holder.likeIcon.setColorFilter(Color.BLACK)
-                            updateLikesInRealtimeDatabase(postId, false)
-                        } else {
-                            holder.likeIcon.setImageResource(R.drawable.full_heart_icon)
-                            likes.add(postId)
-                            userLikes.add(postId)
-                            posts[position].likes++
-                            holder.likes.text  = posts[position].likes.toString()
-                            holder.likeIcon.setColorFilter(Color.RED)
-                            updateLikesInRealtimeDatabase(postId, true)
-                        }
-                        val likesJson = GsonBuilder().create().toJson(likes)
-                        updateUserLikes(user.uid,likes, likesJson)
-                        editor.putString("likes", likesJson)
-                        editor.apply()
+                    val gson = GsonBuilder().create()
+                    val likes: ArrayList<String> = gson.fromJson(snapshot.value.toString(), Utils.arrayListOfStringsToken)
+                    val postId = posts[position].id
+                    val isLiked = likes.contains(postId)
+
+                    if (isLiked) {
+                        likes.remove(postId)
+                        userLikes.remove(postId)
+                        posts[position].likes--
+                        holder.likeIcon.setImageResource(R.drawable.empty_heart_icon)
+                        holder.likeIcon.setColorFilter(Color.BLACK)
                     } else {
-                        val editor = context.getSharedPreferences("SportNet", 0).edit()
-                        val likes = userLikes
-                        val postId = posts[position].id
-                        if (likes.contains(postId)) {
-                            holder.likeIcon.setImageResource(R.drawable.empty_heart_icon)
-                            likes.remove(postId)
-                            userLikes.remove(postId)
-                            posts[position].likes--
-                            holder.likes.text  = posts[position].likes.toString()
-                            holder.likeIcon.setColorFilter(Color.BLACK)
-                            updateLikesInRealtimeDatabase(postId, false)
-                        } else {
-                            holder.likeIcon.setImageResource(R.drawable.full_heart_icon)
-                            likes.add(postId)
-                            userLikes.add(postId)
-                            posts[position].likes++
-                            holder.likes.text  = posts[position].likes.toString()
-                            holder.likeIcon.setColorFilter(Color.RED)
-                            updateLikesInRealtimeDatabase(postId, true)
-                        }
-                        val likesJson = GsonBuilder().create().toJson(likes)
-                        updateUserLikes(user.uid,likes, likesJson)
-                        editor.putString("likes", likesJson)
-                        editor.apply()
+                        likes.add(postId)
+                        userLikes.add(postId)
+                        posts[position].likes++
+                        holder.likeIcon.setImageResource(R.drawable.full_heart_icon)
+                        holder.likeIcon.setColorFilter(Color.RED)
                     }
+
+                    holder.likes.text = posts[position].likes.toString()
+                    updateLikesInRealtimeDatabase(postId, !isLiked)
+                    val likesJson = GsonBuilder().create().toJson(likes)
+                    updateUserLikes(user.uid, likes, likesJson)
                 }.addOnFailureListener { exception ->
+                    Log.e("LikeAction", "Failed to fetch likes: ${exception.message}")
                 }
-            }
-            else {
+            } else {
                 val intent = Intent(context, SignInActivity::class.java)
                 ContextCompat.startActivity(context, intent, null)
             }
-
         }
+
+
+        holder.share.setOnClickListener {
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+
+            // Set the text to share including the post text and content URL
+            val textToShare = "${posts[position].text}\n\n${posts[position].contentUrl}"
+
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, textToShare)
+
+            // Start the activity to share
+            context.startActivity(Intent.createChooser(shareIntent, "Share via")
+                .apply {
+                    // Check if sharing was successful
+                    val shareSuccessful = true // Set this to true if sharing was successful, false otherwise
+                    if (shareSuccessful) {
+                        // Update shares count locally
+                        posts[position].shares++
+
+                        // Update shares count in Firebase
+                        val postId = posts[position].id
+                        updateSharesInRealtimeDatabase(postId)
+
+                        // Update the UI to reflect the changes
+                        holder.shares.text = Utils.formatSocialMediaNumber(posts[position].shares)
+                    }
+                }
+            )
+        }
+
+
 
         updateViewsInRealtimeDatabase(posts[position].id, position)
 
 
+    }
+
+    private fun updateSharesInRealtimeDatabase(postId: String) {
+        val reelsReference = database.getReference("posts/$postId/shares")
+
+        // Increment shares count by 1
+        reelsReference.setValue(ServerValue.increment(1))
+            .addOnSuccessListener {
+                // Handle success
+                Log.i("UpdateShares", "Shares count updated successfully")
+            }
+            .addOnFailureListener { e ->
+                // Handle failure
+                Log.e("UpdateShares", "Failed to update shares count: ${e.message}")
+            }
     }
 
     fun loadMorePosts() {

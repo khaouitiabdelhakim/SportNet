@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:foreground="?attr/selectableItemBackground"
-            android:paddingVertical="10dp"
+            android:paddingVertical="5dp"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -79,6 +79,19 @@
 
 
                 </LinearLayout>
+
+                <ImageView
+                    android:visibility="invisible"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/edit"
+                    android:padding="9dp"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/menu_icon"
+                    android:layout_gravity="center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    />
 
             </LinearLayout>
 
