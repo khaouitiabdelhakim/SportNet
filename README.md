@@ -1,4 +1,4 @@
-# SportNet - Android Application
+# SportNet - Sport Only
 
 ```
 If you find this repository useful or it has helped you,
