@@ -35,6 +35,7 @@ class AccountShowerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAccountShowerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        posts.clear()
 
         binding.postsRecyclerView.layoutManager = LinearLayoutManager(this@AccountShowerActivity, LinearLayoutManager.VERTICAL, false)
         adapter = OwnPostAdapter(this, posts)

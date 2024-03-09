@@ -13,6 +13,7 @@ import com.ensias.sportnet.databinding.ActivityPostBinding
 import com.ensias.sportnet.models.Post
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.ensias.sportnet.utils.Utils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -42,6 +43,7 @@ class PostActivity : AppCompatActivity() {
                 .load(MainActivity.currentUser.profilePictureUrl)
                 .apply(RequestOptions().centerCrop())
                 .into(binding.profile)
+            binding.date.text = Utils.formatDate(MainActivity.currentUser.createdAt)
         }
 
         binding.attachmentZone.visibility = View.INVISIBLE

@@ -31,6 +31,7 @@ class ProfileFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
 
+
         if(auth.currentUser != null ) {
             binding.email.text = auth.currentUser!!.email
             binding.authenticationType.text = "Sign Out"

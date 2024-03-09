@@ -5,8 +5,12 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.ensias.sportnet.MainActivity
 import com.ensias.sportnet.databinding.ActivityEditPostBinding
 import com.ensias.sportnet.models.Post
+import com.ensias.sportnet.utils.Utils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -29,6 +33,15 @@ class EditPostActivity : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
 
         postRef = database.reference.child("posts").child(intent.getStringExtra("postId").toString())
+
+        if(auth.currentUser != null ) {
+            binding.username.text = MainActivity.currentUser.username
+            Glide.with(this)
+                .load(MainActivity.currentUser.profilePictureUrl)
+                .apply(RequestOptions().centerCrop())
+                .into(binding.profile)
+            binding.date.text = Utils.formatDate(MainActivity.currentUser.createdAt)
+        }
 
         loadCurrentPost()
 

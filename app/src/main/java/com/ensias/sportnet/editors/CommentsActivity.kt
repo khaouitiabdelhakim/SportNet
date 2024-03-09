@@ -13,6 +13,7 @@ import com.ensias.sportnet.fragments.HomeFragment
 import com.ensias.sportnet.models.Comment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.ensias.sportnet.utils.Utils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
@@ -43,6 +44,7 @@ class CommentsActivity : AppCompatActivity() {
                 .load(MainActivity.currentUser.profilePictureUrl)
                 .apply(RequestOptions().centerCrop())
                 .into(binding.profile)
+            binding.date.text = Utils.formatDate(MainActivity.currentUser.createdAt)
         }
 
 
