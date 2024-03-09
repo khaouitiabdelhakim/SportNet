@@ -81,7 +81,7 @@ class OwnPostAdapter(private val context: Context, private var posts: ArrayList<
     override fun onBindViewHolder(holder: MyHolder, @SuppressLint("RecyclerView") position: Int) {
 
 
-        if (MainActivity.currentUser.id == posts[position].userId) {
+        if (authentication.currentUser != null && MainActivity.currentUser.id == posts[position].userId) {
             holder.edit.visibility = View.VISIBLE
             holder.edit.setOnClickListener {
                 val intent = Intent(context, EditPostActivity::class.java)
