@@ -42,7 +42,7 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
 
 
     // for loading more posts
-    private val postsPerPage = 15
+    private val postsPerPage = 10
 
     private val loadThreshold = 5
 

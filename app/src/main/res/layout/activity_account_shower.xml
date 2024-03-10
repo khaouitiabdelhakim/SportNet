@@ -109,7 +109,7 @@
                         android:maxLines="1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=". since 12 Dec 2023"
+                        android:text=". since date"
                         android:textColor="#686868"
                         android:lineSpacingExtra="3dp"
                         android:textSize="12sp"/>

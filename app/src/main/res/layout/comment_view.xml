@@ -52,7 +52,7 @@
                     android:maxLines="1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="khaouitiabdelhakim12"
+                    android:text="username"
                     android:textColor="#171717"
                     android:lineSpacingExtra="3dp"
                     android:textSize="16sp"/>
@@ -64,7 +64,7 @@
                     android:maxLines="1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="12 March 2023"
+                    android:text="date"
                     android:textColor="#373737"
                     android:lineSpacingExtra="3dp"
                     android:textSize="13sp"/>
@@ -82,7 +82,7 @@
             android:maxLines="3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lionel Messi, parfois surnommé Leo Messi, né le 24 juin 1987 à Rosario en Argentine, est un footballeur international argentin jouant au poste d'attaquant à l’Inter Miami CF en MLS. Octuple vainqueur du Ballon d'or, un record, il est considéré comme l'un des meilleurs joueurs de football toutes générations confondues."
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. "
             android:textColor="#515151"
             android:lineSpacingExtra="3dp"
             android:textSize="15sp"/>

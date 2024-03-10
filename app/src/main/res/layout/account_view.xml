@@ -47,7 +47,7 @@
                 android:maxLines="1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="khaouitiabdelhakim12"
+                android:text="username"
                 android:textColor="#171717"
                 android:lineSpacingExtra="3dp"
                 android:textSize="17sp"/>
@@ -59,7 +59,7 @@
                 android:maxLines="1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="12 March 2023"
+                android:text="date"
                 android:textColor="#373737"
                 android:lineSpacingExtra="3dp"
                 android:textSize="13sp"/>
