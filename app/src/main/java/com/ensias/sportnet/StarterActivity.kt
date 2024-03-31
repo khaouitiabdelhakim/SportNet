@@ -57,7 +57,7 @@ class StarterActivity : AppCompatActivity() {
     }
 
     private fun startMainActivity() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this@StarterActivity, MainActivity::class.java))
         finish()
     }
 }

@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">SportNet</string>
-
     <string name="home_tab">Home</string>
     <string name="account_tab">Accounts</string>
     <string name="profile_tab">Profile</string>
