@@ -47,12 +47,12 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
     private val loadThreshold = 5
 
 
+
     // firebase
     private val authentication = FirebaseAuth.getInstance()
     private val database = FirebaseDatabase.getInstance()
 
     var startAt: String? = null
-    private var refreshCount = 0
 
     companion object {
         var startFetchingNewPosts = false
@@ -279,16 +279,10 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
 
         val reelsReference = database.getReference("posts")
 
-        val query = if (startAt == null) {
-            reelsReference
-                .orderByChild("id")
-                .limitToLast(postsPerPage)
-        } else {
-            reelsReference
-                .orderByChild("id")
-                .endBefore(startAt)
-                .limitToLast(postsPerPage)
-        }
+        val query = reelsReference
+            .orderByChild("id")
+            .startAfter(startAt) //startAfter
+            .limitToFirst(postsPerPage) //limitToFirst
 
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
@@ -298,16 +292,18 @@ class PostAdapter(private val context: Context, private var posts: ArrayList<Pos
                     val post = childSnapshot.getValue(Post::class.java)
                     if (post != null && !posts.contains(post)) {
                         newPosts.add(post)
+                        startAt = post.id
                     }
                 }
 
-                // Vérifie s'il y a des nouveaux posts avant de mettre à jour startAt
-                if (newPosts.isNotEmpty()) {
-                    startAt = newPosts.first().id  // Met à jour startAt avec l'ID du dernier post chargé
-                    // ordre décroissant des nouveaux posts
-                    newPosts.reverse()
-                    posts.addAll(newPosts)
-                }
+
+                // Shuffle the new posts to randomize the order
+                newPosts.shuffle()
+                //newPosts.reverse()
+
+
+                // Add the new posts to the existing ArrayList
+                posts.addAll(newPosts)
 
                 // Notify the adapter about the inserted items
                 notifyDataSetChanged()
