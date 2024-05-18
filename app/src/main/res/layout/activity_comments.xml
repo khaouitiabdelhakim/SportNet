@@ -123,7 +123,7 @@
                 android:elevation="10dp"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
-                android:backgroundTint="#00BCD4"
+                android:backgroundTint="#004aad"
                 android:paddingBottom="10dp"
                 app:cardCornerRadius="5dp"
                 android:layout_marginHorizontal="100dp"

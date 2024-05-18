@@ -26,134 +26,131 @@
                 <FrameLayout
                     android:layout_gravity="center"
                     android:rotation="-10"
-                    android:background="@drawable/purple_gradient"
+                    android:background="@drawable/blue_gradient"
                     android:layout_width="800dp"
                     android:layout_marginBottom="200dp"
                     android:layout_height="240dp"/>
 
 
                 <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="243dp"
                     android:alpha="0.5"
                     android:scaleType="centerCrop"
                     android:src="@drawable/snow"
-                    app:tint="@color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    />
+                    app:tint="@color/white" />
 
                 <LinearLayout
-                    android:layout_marginBottom="25dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="25dp"
+                    android:gravity="center"
                     android:orientation="vertical"
                     android:paddingHorizontal="10dp">
 
                     <FrameLayout
                         android:layout_width="120dp"
-                        android:backgroundTint="@color/white"
+                        android:layout_height="120dp"
                         android:background="@drawable/corners_rounded"
-                        android:layout_height="120dp">
+                        android:backgroundTint="@color/white">
 
                         <androidx.cardview.widget.CardView
-                            android:elevation="0dp"
-                            app:cardCornerRadius="200dp"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
                             android:layout_gravity="center"
                             android:layout_margin="10dp"
-                            android:layout_width="110dp"
-                            android:backgroundTint="@color/white"
                             android:background="@drawable/corners_rounded"
-                            android:layout_height="110dp">
+                            android:backgroundTint="@color/white"
+                            android:elevation="0dp"
+                            app:cardCornerRadius="200dp">
 
                             <ImageView
-                                android:src="@drawable/rounded_profile"
                                 android:id="@+id/profile"
-                                android:layout_gravity="center"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                />
+                                android:layout_gravity="center"
+                                android:src="@drawable/rounded_profile" />
 
                         </androidx.cardview.widget.CardView>
 
                     </FrameLayout>
+
                     <TextView
-                        android:singleLine="true"
-                        android:maxLines="1"
                         android:id="@+id/email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:singleLine="true"
                         android:text="undefined@gmail.com"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
-                        android:maxLines="1"
-                        android:layout_marginVertical="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginVertical="5dp"
+                        android:lineSpacingExtra="3dp"
+                        android:maxLines="1"
                         android:text="SportNet"
                         android:textColor="@color/black"
-                        android:lineSpacingExtra="3dp"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/signOut"
-                        android:layout_marginTop="13dp"
-                        android:elevation="10dp"
-                        android:layout_gravity="center"
                         android:layout_width="match_parent"
-                        android:backgroundTint="@color/primary"
-                        android:paddingBottom="10dp"
-                        app:cardCornerRadius="5dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginHorizontal="100dp"
-                        android:layout_height="wrap_content">
+                        android:layout_marginTop="13dp"
+                        android:backgroundTint="#004aad"
+                        android:elevation="10dp"
+                        android:paddingBottom="10dp"
+                        app:cardCornerRadius="5dp">
 
 
                         <FrameLayout
-                            android:paddingVertical="1dp"
-                            android:gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingVertical="1dp">
 
                             <LinearLayout
                                 android:id="@+id/signOutText"
-                                android:paddingVertical="2dp"
-                                android:paddingHorizontal="10dp"
-                                android:gravity="center"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="10dp"
+                                android:paddingVertical="2dp">
 
                                 <TextView
                                     android:id="@+id/authenticationType"
-                                    android:layout_gravity="center"
-                                    android:layout_margin="5dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="5dp"
+                                    android:lineSpacingExtra="3dp"
                                     android:text="Sign Out"
                                     android:textColor="@color/white"
-                                    android:lineSpacingExtra="3dp"
-                                    android:textSize="17sp"/>
+                                    android:textSize="17sp" />
 
                             </LinearLayout>
 
                             <ProgressBar
+                                android:id="@+id/signOutProgress"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
                                 android:clickable="false"
                                 android:focusable="false"
-                                android:visibility="invisible"
                                 android:indeterminateTint="@color/white"
                                 android:progress="10"
-                                android:id="@+id/signOutProgress"
-                                android:layout_gravity="center"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"/>
+                                android:visibility="invisible" />
 
                         </FrameLayout>
-
-
 
 
                     </androidx.cardview.widget.CardView>
@@ -176,7 +173,8 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#c5d6ec">
 
                     <TextView
                         android:maxLines="1"
@@ -205,7 +203,8 @@
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:background="@color/white">
 
                             <ImageView
                                 android:layout_margin="15dp"
@@ -269,7 +268,8 @@
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:background="@color/white">
 
                             <ImageView
                                 android:layout_margin="15dp"
@@ -334,7 +334,8 @@
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:background="@color/white">
 
                             <ImageView
                                 android:layout_margin="15dp"
@@ -399,7 +400,8 @@
                             android:gravity="center"
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:background="@color/white">
 
                             <ImageView
                                 android:layout_margin="15dp"
@@ -458,15 +460,6 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:src="@drawable/logo_splash"/>
-            <TextView
-                android:textAlignment="center"
-                android:layout_marginVertical="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="© 2024 SportNet - All rights reserved"
-                android:textColor="#272727"
-                android:lineSpacingExtra="3dp"
-                android:textSize="12sp"/>
 
         </LinearLayout>
 

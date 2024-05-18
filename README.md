@@ -11,7 +11,7 @@ If you'd like to support further, consider buying me a coffee:
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee--yellow.svg?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/kh.abdelhakim)
 
 ## Authors
-Imad AHADAD - Mehdi Elargoubi - Bengmah Anass - KHAOUITI Abdelhakim
+Imad AHADAD - El Mehdi Elargoubi - Bengmah Anass - KHAOUITI Abdelhakim
 
 ## Description
 SportNet is an Android mobile application designed for sports enthusiasts to connect, share content, and engage in discussions related to sports. 

@@ -40,14 +40,14 @@
                     android:src="@drawable/logo_splash"/>
 
                 <TextView
-                    android:fontFamily="@font/main_font"
-                    android:textAlignment="center"
-                    android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/main_font"
                     android:text="SportNet"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"/>
+                    android:textAlignment="center"
+                    android:textColor="#004aad"
+                    android:textSize="22sp" />
                 <TextView
                     android:fontFamily="@font/main_font"
                     android:textAlignment="center"
@@ -63,7 +63,7 @@
                     android:layout_marginTop="30dp"
                     android:clickable="false"
                     android:focusable="false"
-                    android:indeterminateTint="#2B2B2B"
+                    android:indeterminateTint="#004aad"
                     android:progress="10"
                     android:id="@+id/signInProgress"
                     android:layout_gravity="center"
