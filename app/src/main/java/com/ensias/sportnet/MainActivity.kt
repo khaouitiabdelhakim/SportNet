@@ -41,15 +41,7 @@ class MainActivity : AppCompatActivity() {
 
 
         bottomNav.setOnItemSelectedListener { menuItem ->
-            Log.d("clickBottomNavigation","click")
-            when (menuItem.itemId) {
-                R.id.home -> {
-                    loadFragment(HomeFragment())
-                    binding.bottomNav.menu.findItem(R.id.home).setIcon(R.drawable.home_full_icon)
-                    binding.bottomNav.menu.findItem(R.id.accounts).setIcon(R.drawable.categories_empty_icon)
-                    binding.bottomNav.menu.findItem(R.id.profile).setIcon(R.drawable.user_empty_icon)
-                    true
-                }
+           
                 R.id.accounts -> {
                     loadFragment(AccountsFragment())
                     binding.bottomNav.menu.findItem(R.id.home).setIcon(R.drawable.home_empty_icon)
