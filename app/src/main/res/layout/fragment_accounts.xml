@@ -75,38 +75,39 @@
         </LinearLayout>
 
         <FrameLayout
-            android:layout_marginTop="15dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#c5d6ec"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
 
 
             <LinearLayout
-                android:paddingVertical="2dp"
-                android:backgroundTint="#FAFAFA"
-                android:background="@drawable/curved_background_all_corners"
                 android:id="@+id/searchLayout"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:background="@drawable/curved_background_all_corners"
+                android:orientation="horizontal"
+                android:paddingVertical="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.appcompat.widget.SearchView
-                    android:layout_weight="10"
-                    android:inputType="text"
                     android:id="@+id/searchView"
-                    android:background="@android:color/transparent"
-                    android:backgroundTint="@android:color/transparent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:queryHint="look for an account"
-                    app:iconifiedByDefault="false"/>
+                    android:layout_weight="10"
+                    android:background="@android:color/transparent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:inputType="text"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="look for an account" />
 
             </LinearLayout>
 
@@ -122,7 +123,8 @@
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
     </LinearLayout>
 
@@ -145,7 +147,8 @@
         android:id="@+id/result"
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#c5d6ec">
 
         <ImageView
             android:src="@drawable/no_result"

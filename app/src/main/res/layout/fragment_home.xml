@@ -93,7 +93,9 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#c5d6ec">
+
 
             <LinearLayout
                 android:gravity="center"
@@ -142,6 +144,7 @@
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_width="0dp"
+                        android:backgroundTint="@color/white"
                         android:layout_height="wrap_content">
 
                         <LinearLayout
@@ -203,52 +206,50 @@
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_width="0dp"
+                        android:backgroundTint="@color/white"
                         android:layout_height="wrap_content">
 
                         <LinearLayout
+                            android:layout_width="108dp"
+                            android:layout_height="54dp"
                             android:gravity="center"
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_margin="15dp"
-                                android:src="@drawable/picture"
-                                android:layout_gravity="center"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
-                                />
+                                android:layout_gravity="center"
+                                android:layout_margin="15dp"
+                                android:src="@drawable/picture" />
 
 
                             <LinearLayout
-                                android:layout_weight="1"
-                                android:orientation="vertical"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
 
                                 <TextView
-                                    android:maxLines="1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
+                                    android:lineSpacingExtra="3dp"
+                                    android:maxLines="1"
                                     android:text="Picture"
                                     android:textColor="@color/black"
-                                    android:lineSpacingExtra="3dp"
-                                    android:textSize="14sp"/>
+                                    android:textSize="14sp" />
 
 
                                 <TextView
-                                    android:maxLines="1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
+                                    android:lineSpacingExtra="3dp"
+                                    android:maxLines="1"
                                     android:text="post a picture"
                                     android:textColor="#5E5E5E"
-                                    android:lineSpacingExtra="3dp"
-                                    android:textSize="12sp"/>
+                                    android:textSize="12sp" />
 
 
                             </LinearLayout>
-
-
 
 
                         </LinearLayout>
@@ -264,6 +265,7 @@
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_width="0dp"
+                        android:backgroundTint="@color/white"
                         android:layout_height="wrap_content">
 
                         <LinearLayout
