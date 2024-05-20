@@ -26,6 +26,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.ensias.sportnet.MainActivity
 import com.ensias.sportnet.editors.EditPostActivity
+import com.ensias.sportnet.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -38,7 +39,6 @@ import java.util.regex.Pattern
 
 
 class PostAdapter(private val context: Context, private var posts: ArrayList<Post>): RecyclerView.Adapter<PostAdapter.MyHolder>(){
-
 
 
     // for loading more posts

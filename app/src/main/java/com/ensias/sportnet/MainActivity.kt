@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
 
     companion object {
-        lateinit var currentUser: User
+        var currentUser: User = User()
         var userLikes = ArrayList<String>()
         var userCommentsLikes = ArrayList<String>()
     }

@@ -79,7 +79,8 @@ class AccountShowerActivity : AppCompatActivity() {
                         .apply(RequestOptions().centerCrop())
                         .into(binding.profileBanner)
 
-                    if (currentAccount.username.equals(MainActivity.currentUser.username)) binding.editProfile.visibility = View.VISIBLE
+
+                    if (currentAccount.username == MainActivity.currentUser.username) binding.editProfile.visibility = View.VISIBLE
 
 
                 }
